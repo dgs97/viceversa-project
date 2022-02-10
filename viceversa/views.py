@@ -1,3 +1,4 @@
+from posixpath import split
 from django.shortcuts import render 
 
 def home(request):
@@ -5,5 +6,6 @@ def home(request):
 
 def reverse(request):
     text = request.GET["usertext"]
+    count_of_words = len(text.split())
     text_reverse = text[::-1]
-    return render(request,'reverse.html',{"usertext":text,"reversetext":text_reverse})
+    return render(request,'reverse.html',{"countwords":count_of_words,"usertext":text,"reversetext":text_reverse})
